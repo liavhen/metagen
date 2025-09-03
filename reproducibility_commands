@@ -1,0 +1,25 @@
+# Section 3.1 X-Shaped Pattern
+python diffusion/sample.py --name b2-x --data_cfg b2 \
+    --num_steps 100 --posterior_sampling --num_posterior_steps 100 \
+    --eval_batch_size 1  --repeat 10 --reduction best \
+    --ood --specific_pattern x --override_wavelengths 0.825 0.875 0.925 0.975  \
+    --verbose --seed 0
+
+# Section 3.2 - Uniform Beam Splitter
+python diffusion/sample.py --name c2-uniform-beam-splitter --data_cfg c2  \
+    --num_steps 200 --posterior_sampling --num_posterior_steps 100 --lr_scale 0.8 \
+    --eval_batch_size 30 \
+    --override_wavelengths 1.5 --ood --specific_pattern uniform \
+    --verbose --seed 0 
+
+# Section 3.3 - Polarization Splitter
+python diffusion/sample.py --name c2-pol-splitter-candidates --data_cfg c2 \
+    --override_wavelengths 1.5 --ood --specific_pattern horizontal_1st_orderes \
+    --eval_batch_size 30 
+
+# this script saves figures at <SAMPLINGS_DIR>/c2-pol-splitter-candidates_<TIMESTAMP>, with <SAMPLINGS_DIR> defined in utils/paths.py
+python optimization/optimization.py --data_cfg d2 --target p_splitter_horizontal_1 --lam 1.5 \
+    --initial_guess_pt /mnt/storage/users/liav/metagen/samplings/c2-pol-splitter-candidates_20250903-135839/raw_data.pt \
+    --random_exps 30 \ 
+    --num_steps 800 \ 
+    --log_every 50 

@@ -1,0 +1,31 @@
+model_params:
+  name: 'M-CVAE'
+  in_channels: 2
+  num_classes: 50
+  latent_dim: 100
+
+data_params:
+  # data_path: "Data/"
+  data_cfg: "a2"
+  augments: True
+  train_batch_size: 1024
+  val_batch_size:  1024
+  patch_size: 64
+  num_workers: 8
+
+
+exp_params:
+  LR: 0.001
+  weight_decay: 0.0
+  scheduler_gamma: 0.95
+  kld_weight: 0.00025
+  manual_seed: 1265
+
+trainer_params:
+  # gpus: [1]
+  max_epochs: 1000
+
+logging_params:
+  # save_dir: "/storage/liav/storage/metalens/vae_logs/"
+  save_dir: "/mnt/storage/datasets/liav/vae_logs/"
+  name: "m-cvae-a2"
