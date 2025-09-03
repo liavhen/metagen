@@ -36,7 +36,7 @@ Make sure paths are consistent with `data/data_config.py`.
 
 ### Models and Datasets
 All datasets and models reported in the paper are shared through Hugging Face.
-📂 [Datasets](https://huggingface.co/liavhen/metagen-models/tree/main)
+📂 [Datasets](https://huggingface.co/datasets/liavhen/metagen-datasets/tree/main)
 🧩 [Models](https://huggingface.co/liavhen/metagen-models/tree/main)
 
 ## Running Scripts
